@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>图片压缩工具</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>图片压缩工具</h1>
+        
+        <div class="upload-area">
+            <input type="file" id="fileInput" accept="image/*">
+            <input type="file" id="folderInput" webkitdirectory directory multiple>
+            <label for="fileInput">选择单张图片</label>
+            <label for="folderInput" class="folder-btn">选择文件夹</label>
+            <p class="drag-tip">或将图片拖放到这里</p>
+        </div>
+
+        <div class="preview-area">
+            <img id="preview" style="display: none; max-width: 100%;">
+            <p id="imageInfo"></p>
+        </div>
+
+        <div class="compress-area" style="display: none;">
+            <div class="quality-control">
+                <label for="quality">压缩质量:</label>
+                <select id="quality">
+                    <option value="0.7">高质量</option>
+                    <option value="0.5" selected>中等质量</option>
+                    <option value="0.3">低质量</option>
+                </select>
+                
+                <label for="colorMode" style="margin-left: 20px;">色彩模式:</label>
+                <select id="colorMode">
+                    <option value="high">高保真</option>
+                    <option value="normal" selected>标准</option>
+                    <option value="low">压缩优先</option>
+                </select>
+            </div>
+
+            <button id="compressBtn" class="compress-btn">压缩图片</button>
+            
+            <!-- 单张图片进度条 -->
+            <div class="progress-bar" style="display: none;">
+                <div class="progress"></div>
+            </div>
+            
+            <!-- 批量处理进度 -->
+            <div class="batch-progress" style="display: none;">
+                <p class="batch-status">正在处理: 0/0</p>
+                <div class="progress-bar">
+                    <div class="progress"></div>
+                </div>
+            </div>
+
+            <div class="compress-info"></div>
+            
+            <!-- 批量下载按钮 -->
+            <div class="batch-result" style="display: none;">
+                <button id="downloadAll" class="download-btn">下载所有压缩图片</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 引入压缩库 -->
+    <script src="https://cdn.jsdelivr.net/npm/browser-image-compression@2.0.2/dist/browser-image-compression.js"></script>
+    <!-- 引入ZIP库 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.7.1/jszip.min.js"></script>
+    <!-- 引入我们的脚本 -->
+    <script src="script.js"></script>
+</body>
+</html>
